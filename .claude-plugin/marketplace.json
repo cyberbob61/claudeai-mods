@@ -1,0 +1,8 @@
+{
+  "name": "local-mods",
+  "owner": { "name": "stepan" },
+  "plugins": [
+    { "name": "wait-indicator", "source": "./wait-indicator" },
+    { "name": "sidebar-age-sections", "source": "./sidebar-age-sections" }
+  ]
+}

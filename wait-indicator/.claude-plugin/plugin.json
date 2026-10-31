@@ -1,0 +1,1 @@
+{ "name": "wait-indicator", "version": "0.2.0", "description": "Prefixes the session title in the sidebar with a red WAIT while the chat waits for your input" }
