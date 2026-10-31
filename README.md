@@ -28,8 +28,6 @@ claude plugin install sidebar-age-sections --marketplace cyberbob61/claudeai-mod
 
 In the desktop app, where `/plugin` does not run: click + next to the prompt box, then Plugins, Add marketplace with `cyberbob61/claudeai-mods`, then Add plugin.
 
-This repository is private: it installs only for people who can read it on GitHub and whose machine already holds a git credential for github.com (an SSH key, or `gh auth login` then `gh auth setup-git`).
-
 ## Limits
 
 - Cloud sessions are not visible to mods, so they are not sorted into the sections.
