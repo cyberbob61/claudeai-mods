@@ -1,8 +1,9 @@
 import type { EngineInterface, Register } from 'claude-code'
 
 const DAY = 24 * 60 * 60 * 1000
-// oldest bound last: a session lands in the first section whose age limit it is under
+// 'today' is decided by local midnight in bucketOf; the rest by age, oldest bound last
 const SECTIONS: [string, number][] = [
+  ['today', 0],
   ['last day', DAY],
   ['last 3 days', 3 * DAY],
   ['last week', 7 * DAY],
@@ -29,8 +30,9 @@ async function sectionIds($: EngineInterface) {
   return new Map(list.filter(s => s.kind === 'manual').map(s => [s.name, s.id]))
 }
 
-export function bucketOf(ageMs: number) {
-  return SECTIONS.find(([, limit]) => ageMs < limit)![0]
+export function bucketOf(lastMs: number, nowMs: number) {
+  if (lastMs >= new Date(nowMs).setHours(0, 0, 0, 0)) return 'today'
+  return SECTIONS.find(([, limit]) => nowMs - lastMs < limit)![0]
 }
 
 let isSorting = false
@@ -59,7 +61,7 @@ async function sortSidebar($: EngineInterface) {
       if (s.pinned || !s.lastActivityAt || (s.group && !ours.has(s.group.name))) continue
       // the app moves a nested session with its parent and refuses the whole batch if it is named alone
       if (s.startedBy && active.has(s.startedBy)) continue
-      const target = bucketOf(now - Date.parse(s.lastActivityAt))
+      const target = bucketOf(Date.parse(s.lastActivityAt), now)
       if (s.group?.name === target) continue
       const id = ids.get(target)
       if (id) moves.set(id, [...(moves.get(id) ?? []), s.sessionId])

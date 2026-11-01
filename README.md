@@ -5,7 +5,7 @@ Two mods for the Claude desktop app (Code tab sidebar).
 | Mod | What it does |
 | --- | --- |
 | `wait-indicator` | Puts `🔴 WAIT · ` in front of the session title while the chat waits for your input, and removes it when you send a message. |
-| `sidebar-age-sections` | Files unpinned sessions into `last day`, `last 3 days`, `last week` and `more than a week` sections by the time of their last message, and re-sorts after every Claude answer. |
+| `sidebar-age-sections` | Files unpinned sessions into `today` (since local midnight), `last day`, `last 3 days`, `last week` and `more than a week` sections by the time of their last message, and re-sorts after every Claude answer. |
 
 ## Install
 

@@ -1,1 +1,1 @@
-{ "name": "sidebar-age-sections", "version": "0.1.1", "description": "Files unpinned sidebar sessions into last day / last 3 days / last week / more than a week sections by their last message" }
+{ "name": "sidebar-age-sections", "version": "0.2.0", "description": "Files unpinned sidebar sessions into today / last day / last 3 days / last week / more than a week sections by their last message" }
